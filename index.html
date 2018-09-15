@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Documentation for PyAER.">
+  
+  <link rel="shortcut icon" href="img/favicon.ico">
+  <title>Home - PyAER Documentation</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link href="css/highlight-fix.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Home";
+    var mkdocs_page_input_path = "index.md";
+    var mkdocs_page_url = "/pyaer-doc/";
+  </script>
+  
+  <script src="js/jquery-2.1.1.min.js" defer></script>
+  <script src="js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="." class="icon icon-home"> PyAER Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href=".">Home</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#design-principle">Design Principle</a></li>
+    
+
+    <li class="toctree-l2"><a href="#installation">Installation</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#1-install-bleeding-edge-libcaer-dependency-recommend">1. Install bleeding-edge libcaer dependency (RECOMMEND)</a></li>
+        
+            <li><a class="toctree-l3" href="#2-directly-install-from-pypi-recommend">2. Directly install from pypi (RECOMMEND)</a></li>
+        
+            <li><a class="toctree-l3" href="#3-install-from-source">3. Install from source</a></li>
+        
+        </ul>
+    
+
+    <li class="toctree-l2"><a href="#got-a-linux">Got a Linux?</a></li>
+    
+
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="usb-device/">USB Device</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="serial-device/">Serial Device</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="dvs128/">DVS128</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="davis/">DAVIS</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="edvs/">eDVS</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="dynapse/">DYNAPSE</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="filters/">Filters</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="utils/">Utils</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="log/">Logging</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href=".">PyAER Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Home</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/duguyue100/pyaer/edit/master/docs/index.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <p><center><img src='https://dgyblog.com/projects-term/images/pyaer-imgs/pyaer-title-img.png', style='max-width: 400px;'></center></p>
+<p><a href="https://github.com/duguyue100/pyaer"><img alt="GitHub release" src="https://img.shields.io/github/release/duguyue100/pyaer.svg?style=flat-square" /></a>
+<a href="https://pypi.org/project/pyaer/"><img alt="PyPI - Python Version" src="https://img.shields.io/pypi/pyversions/pyaer.svg?style=flat-square" /></a>
+<a href="https://travis-ci.org/duguyue100/pyaer"><img alt="Build Status" src="https://api.travis-ci.org/duguyue100/pyaer.svg?branch=master" /></a>
+<a href="https://ci.appveyor.com/project/duguyue100/pyaer/branch/master"><img alt="Build status" src="https://ci.appveyor.com/api/projects/status/uf13jm7690abu11i/branch/master?svg=true" /></a>
+<a href="https://github.com/duguyue100/pyaer/blob/master/LICENSE"><img alt="license" src="https://img.shields.io/github/license/duguyue100/pyaer.svg" /></a></p>
+<p><img alt="Ubuntu" src="https://img.shields.io/badge/OS-Ubuntu-orange.svg" />
+<img alt="macOS" src="https://img.shields.io/badge/OS-macOS-orange.svg" />
+<img alt="Raspbian" src="https://img.shields.io/badge/OS-Raspbian%20Stretch-orange.svg" />
+<img alt="Windows" src="https://img.shields.io/badge/OS-Windows-orange.svg" /></p>
+<p>PyAER with Swig Bindings</p>
+<p>Special thanks to <a href="http://inilabs.com/">iniLabs</a> for making this possible.</p>
+<p>The project is in its Alpha development stage, please submit an <a href="https://github.com/duguyue100/pyaer/issues">issue</a> if you need our help.</p>
+<h2 id="design-principle">Design Principle</h2>
+<ul>
+<li>Minimum installation effort</li>
+<li>Keep Python 2 and 3 in mind</li>
+<li>Clean, simple, easy to manage</li>
+<li>Well documented, human-readable code</li>
+</ul>
+<h2 id="installation">Installation</h2>
+<h4 id="1-install-bleeding-edge-libcaer-dependency-recommend">1. Install bleeding-edge <code>libcaer</code> dependency (RECOMMEND)</h4>
+<div class="codehilite"><pre><span></span>$ bash &lt;<span class="o">(</span>curl -s https://raw.githubusercontent.com/duguyue100/pyaer/master/install-libcaer.sh<span class="o">)</span>
+</pre></div>
+
+
+<p><strong>NOTE:</strong> To build <code>libcaer</code> on Windows, please follow <a href="https://github.com/inilabs/libcaer/blob/master/README.Windows">this description</a>.</p>
+<p><strong>NOTE:</strong> For more information, see <a href="https://github.com/inilabs/libcaer"><code>libcaer</code> repo</a>.</p>
+<p><strong>NOTE:</strong> From 0.1.0a18, we support eDVS, you will need to install <code>libserialport</code> so that the package can work properly, follow the building instructions from <a href="https://sigrok.org/wiki/Libserialport">here</a>. Currently, this support is not built into the release since we are not clear how useful is this feature. If you are interested, you can build the project from scratch.</p>
+<h4 id="2-directly-install-from-pypi-recommend">2. Directly install from pypi (RECOMMEND)</h4>
+<div class="codehilite"><pre><span></span>$ pip install pyaer -U
+</pre></div>
+
+
+<h4 id="3-install-from-source">3. Install from source</h4>
+<div class="codehilite"><pre><span></span>$ git clone https://github.com/duguyue100/pyaer.git
+$ make install
+</pre></div>
+
+
+<h2 id="got-a-linux">Got a Linux?</h2>
+<p><code>libcaer</code> relies on <code>libusb</code> based driver, you won't be able
+to access the camera unless fixing the <code>udev</code> rules. Refer to details
+at <a href="https://inivation.com/support/hardware/davis240/#linux">here</a>.</p>
+<div class="codehilite"><pre><span></span>$ bash &lt;<span class="o">(</span>curl -s https://raw.githubusercontent.com/duguyue100/pyaer/master/install-udev.sh<span class="o">)</span>
+</pre></div>
+
+
+<!-- ## Design Principle
+
++ Minimum installation effort
++ Keep Python 2 and 3 in mind
++ Clean, simple, easy to manage
++ Well documented, human-readable code
+
+## Installation
+
+1. Install bleeding-edge `libcaer` dependency (RECOMMEND)
+
+    ```bash
+    $ bash <(curl -s https://raw.githubusercontent.com/duguyue100/pyaer/master/install-libcaer.sh)
+    ```
+
+    __NOTE:__ To build `libcaer` on Windows, please follow [this description](https://github.com/inilabs/libcaer/blob/master/README.Windows).
+
+    __NOTE:__ For more information, see [`libcaer` repo](https://github.com/inilabs/libcaer).
+
+    __NOTE:__ From 0.1.0a18, we support eDVS, you will need to install `libserialport` so that the package can work properly, follow the building instructions from [here](https://sigrok.org/wiki/Libserialport). Currently, this support is not built into the release since we are not clear how useful is this feature. If you are interested, you can build the project from scratch.
+
+2. Directly install from pypi (RECOMMEND)
+
+    ```bash
+    $ pip install pyaer
+    ```
+
+3. Install from source
+
+    ```
+    $ git clone https://github.com/duguyue100/pyaer.git
+    $ make install
+    ```
+
+## Got a Linux?
+
+`libcaer` relies on `libusb` based driver, you won't be able
+to access the camera unless fixing the `udev` rules. Refer to details
+at [here](https://inivation.com/support/hardware/davis240/#linux).
+
+
+wzxhzdk:4
+
+
+## Running Examples
+
+The [scripts](./scripts) folder provides some examples for you to play with:
+
+1. `dvs128-test`: you need OpenCV to run this example, note that if you are on Mac, OpenCV's `waitKey()` function may cause delay of displaying frames.
+
+2. `dvs128-glumpy`: you need `glumpy` package to run this example. `glumpy` is a fast visualization library based on OpenGL. We found it's very fast to render images. In our case, we use GLFW backend. If `glumpy` couldn't find your installed GLFW on your system, make sure you set the `GLFW_LIBRARY` variable to `/your/glfw/library/path/libglfw.so`.
+
+3. `dvs240-test`: you need OpenCV to run this example.
+
+4. `dvs346-test`: you need OpenCV to run this example.
+
+More examples are coming...
+
+## Yeah, you need SWIG
+
+__You only need to read this section if you are planning to compile
+`pyaer` from source.__
+
+This repository uses SWIG to create Python bindings. And you will need to
+compile the latest SWIG from source. The reason is because current SWIG
+cannot handle some cases in libcaer, we made a modified SWIG for this purpose.
+
+1. Install compilation dependency
+
+    ```
+    $ sudo apt-get install automake
+    $ sudo apt-get install bison
+    ```
+
+    _There might be other dependencies for compiling SWIG_
+
+2. Compile SIWG
+
+    ```
+    $ git clone https://github.com/duguyue100/swig
+    $ cd swig
+    $ ./autogen.sh
+    $ ./configure
+    $ make
+    $ sudo make install
+    ```
+
+    For compiling SWIG with Python
+
+    ```
+    $ ./configure --with-python=$(command -v python) --without-python3
+    ```
+
+    The above is an example with Python 2, you can configure for Python 3 as well
+
+    ```
+    $ ./configure --with-python=$(command -v python) --without-python2
+    ```
+
+    __Note:__ If you are not compile the SWIG with system Python distribution,
+    it won't link to the custom Python automatically.
+
+    You will need to configure `LD_LIBRARY_PATH` for swig running properly.
+
+    e.g.
+
+    ```
+    LD_LIBRARY_PATH=$HOME/anaconda2/lib:$LD_LIBRARY_PATH swig
+    ```
+
+## Limitations and Notes
+
++ Current status of the project is meant for single device use. Potentially,
+this library supports multiple devices at the same time by giving concrete
+device names and serial numbers. Supporting and testing for multiple devices
+setup is in long-term plan, but we are not working on this right now.
+
++ Once the data stream is open, the data will be streamed through USB connection
+at certain publishing frequency (e.g. 100Hz). This is a hardware configuration,
+therefore you couldn't drop event packets by putting software-level delay.
+You can either skip processing the coming packets by some conditions or
+implement a queuing system that can do a particular dynamic fetching.
+
++ It's recommended to implement a multi-processing or multi-threading
+program so that each process or thread only deals with one particular task.
+The fetching of the event packets may be very fast, your program may be delayed
+if you are not carefully coping with this fact.
+
++ DYNAP is generally supported. We are currently looking for the correct
+bias configuration mechanism so that it can easily support the use of the
+device. We have mapped some core functions that are essential to device
+configuration.
+
+## Contacts
+
+Yuhuang Hu  
+Email: duguyue100@gmail.com
+ -->
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="usb-device/" class="btn btn-neutral float-right" title="USB Device">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/duguyue100/pyaer/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+        <span style="margin-left: 15px"><a href="usb-device/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '.';</script>
+    <script src="js/theme.js" defer></script>
+      <script src="search/main.js" defer></script>
+
+</body>
+</html>
+
+<!--
+MkDocs version : 1.0.4
+Build Date UTC : 2018-09-15 02:28:39
+-->

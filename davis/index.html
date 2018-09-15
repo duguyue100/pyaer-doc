@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>DAVIS - PyAER Documentation</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link href="../css/highlight-fix.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "DAVIS";
+    var mkdocs_page_input_path = "davis.md";
+    var mkdocs_page_url = "/pyaer-doc/davis/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> PyAER Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../usb-device/">USB Device</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../serial-device/">Serial Device</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../dvs128/">DVS128</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">DAVIS</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#davis">DAVIS</a></li>
+    
+
+    <li class="toctree-l2"><a href="#davisfx2">DAVISFX2</a></li>
+    
+
+    <li class="toctree-l2"><a href="#davisfx3">DAVISFX3</a></li>
+    
+
+    <li class="toctree-l2"><a href="#davisrpi">DAVISRPI</a></li>
+    
+
+    <li class="toctree-l2"><a href="#obtain_device_info">obtain_device_info</a></li>
+    
+
+    <li class="toctree-l2"><a href="#open">open</a></li>
+    
+
+    <li class="toctree-l2"><a href="#set_bias_from_json">set_bias_from_json</a></li>
+    
+
+    <li class="toctree-l2"><a href="#set_cf_bias">set_cf_bias</a></li>
+    
+
+    <li class="toctree-l2"><a href="#set_bias">set_bias</a></li>
+    
+
+    <li class="toctree-l2"><a href="#get_cf_bias">get_cf_bias</a></li>
+    
+
+    <li class="toctree-l2"><a href="#get_bias">get_bias</a></li>
+    
+
+    <li class="toctree-l2"><a href="#save_bias_to_json">save_bias_to_json</a></li>
+    
+
+    <li class="toctree-l2"><a href="#start_data_stream">start_data_stream</a></li>
+    
+
+    <li class="toctree-l2"><a href="#set_noise_filter">set_noise_filter</a></li>
+    
+
+    <li class="toctree-l2"><a href="#enable_noise_filter">enable_noise_filter</a></li>
+    
+
+    <li class="toctree-l2"><a href="#disable_noise_filter">disable_noise_filter</a></li>
+    
+
+    <li class="toctree-l2"><a href="#get_polarity_event">get_polarity_event</a></li>
+    
+
+    <li class="toctree-l2"><a href="#get_event">get_event</a></li>
+    
+
+    <li class="toctree-l2"><a href="#davis240c-bias-example">DAVIS240C Bias Example</a></li>
+    
+
+    <li class="toctree-l2"><a href="#davis346b-bias-example">DAVIS346B Bias Example</a></li>
+    
+
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../edvs/">eDVS</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../dynapse/">DYNAPSE</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../filters/">Filters</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../utils/">Utils</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../log/">Logging</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">PyAER Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>DAVIS</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/duguyue100/pyaer/edit/master/docs/davis.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <p><span style="float:right;"><a href="https://github.com/duguyue100/pyaer/blob/master/pyaer/davis.py#L15">[source]</a></span></p>
+<h3 id="davis">DAVIS</h3>
+<div class="codehilite"><pre><span></span><span class="n">pyaer</span><span class="o">.</span><span class="n">davis</span><span class="o">.</span><span class="n">DAVIS</span><span class="p">(</span><span class="n">device_id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">bus_number_restrict</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">dev_address_restrict</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">serial_number</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">noise_filter</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</pre></div>
+
+
+<p>DAVIS.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>device_id</strong>: <code>int</code><br/>
+    a unique ID to identify the device from others.
+    Will be used as the source for EventPackets being
+    generate from its data.<br/>
+    <code>default is 1</code></li>
+<li><strong>bus_number_restrict</strong>: <code>int</code><br/>
+    restrict the search for viable devices to only this USB
+    bus number.<br/>
+    <code>default is 0</code></li>
+<li><strong>dev_address_restrict</strong>: <code>int</code><br/>
+    restrict the search for viable devices to only this USB
+    device address.<br/>
+    <code>default is 0</code></li>
+<li><strong>serial_number</strong>: <code>str</code><br/>
+    restrict the search for viable devices to only devices which do
+    possess the given Serial Number in their USB
+    SerialNumber descriptor.<br/>
+    <code>default is ""</code></li>
+<li><strong>noise_filter</strong>: <code>bool</code><br/>
+    if enable noise filter.<br/>
+    <code>default is False</code></li>
+</ul>
+<hr />
+<p><span style="float:right;"><a href="https://github.com/duguyue100/pyaer/blob/master/pyaer/davis.py#L1219">[source]</a></span></p>
+<h3 id="davisfx2">DAVISFX2</h3>
+<div class="codehilite"><pre><span></span><span class="n">pyaer</span><span class="o">.</span><span class="n">davis</span><span class="o">.</span><span class="n">DAVISFX2</span><span class="p">(</span><span class="n">device_id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">bus_number_restrict</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">dev_address_restrict</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">serial_number</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">noise_filter</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</pre></div>
+
+
+<p>DAVIS FX2.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>device_id</strong>: <code>int</code><br/>
+    a unique ID to identify the device from others.
+    Will be used as the source for EventPackets being
+    generate from its data.<br/>
+    <code>default is 1</code></li>
+<li><strong>bus_number_restrict</strong>: <code>int</code><br/>
+    restrict the search for viable devices to only this USB
+    bus number.<br/>
+    <code>default is 0</code></li>
+<li><strong>dev_address_restrict</strong>: <code>int</code><br/>
+    restrict the search for viable devices to only this USB
+    device address.<br/>
+    <code>default is 0</code></li>
+<li><strong>serial_number</strong>: <code>str</code><br/>
+    restrict the search for viable devices to only devices which do
+    possess the given Serial Number in their USB
+    SerialNumber descriptor.<br/>
+    <code>default is ""</code></li>
+<li><strong>noise_filter</strong>: <code>bool</code><br/>
+    if enable noise filter.<br/>
+    <code>default is False</code></li>
+</ul>
+<hr />
+<p><span style="float:right;"><a href="https://github.com/duguyue100/pyaer/blob/master/pyaer/davis.py#L1291">[source]</a></span></p>
+<h3 id="davisfx3">DAVISFX3</h3>
+<div class="codehilite"><pre><span></span><span class="n">pyaer</span><span class="o">.</span><span class="n">davis</span><span class="o">.</span><span class="n">DAVISFX3</span><span class="p">(</span><span class="n">device_id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">bus_number_restrict</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">dev_address_restrict</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">serial_number</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">noise_filter</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</pre></div>
+
+
+<p>DAVIS FX3.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>device_id</strong>: <code>int</code><br/>
+    a unique ID to identify the device from others.
+    Will be used as the source for EventPackets being
+    generate from its data.<br/>
+    <code>default is 1</code></li>
+<li><strong>bus_number_restrict</strong>: <code>int</code><br/>
+    restrict the search for viable devices to only this USB
+    bus number.<br/>
+    <code>default is 0</code></li>
+<li><strong>dev_address_restrict</strong>: <code>int</code><br/>
+    restrict the search for viable devices to only this USB
+    device address.<br/>
+    <code>default is 0</code></li>
+<li><strong>serial_number</strong>: <code>str</code><br/>
+    restrict the search for viable devices to only devices which do
+    possess the given Serial Number in their USB
+    SerialNumber descriptor.<br/>
+    <code>default is ""</code></li>
+<li><strong>noise_filter</strong>: <code>bool</code><br/>
+    if enable noise filter.<br/>
+    <code>default is False</code></li>
+</ul>
+<hr />
+<p><span style="float:right;"><a href="https://github.com/duguyue100/pyaer/blob/master/pyaer/davis.py#L1363">[source]</a></span></p>
+<h3 id="davisrpi">DAVISRPI</h3>
+<div class="codehilite"><pre><span></span><span class="n">pyaer</span><span class="o">.</span><span class="n">davis</span><span class="o">.</span><span class="n">DAVISRPI</span><span class="p">(</span><span class="n">device_id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">bus_number_restrict</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">dev_address_restrict</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">serial_number</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">noise_filter</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</pre></div>
+
+
+<p>DAVIS RPI.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>device_id</strong>: <code>int</code><br/>
+    a unique ID to identify the device from others.
+    Will be used as the source for EventPackets being
+    generate from its data.<br/>
+    <code>default is 1</code></li>
+<li><strong>bus_number_restrict</strong>: <code>int</code><br/>
+    restrict the search for viable devices to only this USB
+    bus number.<br/>
+    <code>default is 0</code></li>
+<li><strong>dev_address_restrict</strong>: <code>int</code><br/>
+    restrict the search for viable devices to only this USB
+    device address.<br/>
+    <code>default is 0</code></li>
+<li><strong>serial_number</strong>: <code>str</code><br/>
+    restrict the search for viable devices to only devices which do
+    possess the given Serial Number in their USB
+    SerialNumber descriptor.<br/>
+    <code>default is ""</code></li>
+<li><strong>noise_filter</strong>: <code>bool</code><br/>
+    if enable noise filter.<br/>
+    <code>default is False</code></li>
+</ul>
+<hr />
+<h3 id="obtain_device_info">obtain_device_info</h3>
+<div class="codehilite"><pre><span></span><span class="n">obtain_device_info</span><span class="p">(</span><span class="n">handle</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Obtain DAVIS info.</p>
+<p>This function collects the following information from the device:</p>
+<ul>
+<li>Deveice ID</li>
+<li>Device serial number</li>
+<li>Device USB bus number</li>
+<li>Device USB device address</li>
+<li>Device string</li>
+<li>Logic version</li>
+<li>If the device is the master device</li>
+<li>Logic clock</li>
+<li>ADC clock</li>
+<li>Chip ID</li>
+<li>Camera DVS width</li>
+<li>Camera DVS height</li>
+<li>If the device has pixel filter</li>
+<li>If the device has hardware background activity filter</li>
+<li>If the device has test event generator</li>
+<li>Camera APS width</li>
+<li>Camera APS height</li>
+<li>APS color filter</li>
+<li>If the device has APS global shutter</li>
+<li>If the device has APS quad ROI</li>
+<li>If the device has APS external ADC</li>
+<li>If the device has APS internal ADC</li>
+<li>If external input has generator</li>
+<li>If external input has extra detectors</li>
+<li>If the device has DVS ROI filter</li>
+<li>If the device has DVS statistics</li>
+<li>If the device has MUX statistics</li>
+</ul>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>handle</strong>: <code>caerDeviceHandle</code><br/>
+    a valid device handle that can be used with the other
+    <code>libcaer</code> functions, or <code>None</code> on error.</li>
+</ul>
+<hr />
+<h3 id="open">open</h3>
+<div class="codehilite"><pre><span></span><span class="nb">open</span><span class="p">(</span><span class="n">device_id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">bus_number_restrict</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">dev_address_restrict</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">serial_number</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Open DAVIS device.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>device_id</strong>: <code>int</code><br/>
+    a unique ID to identify the device from others.
+    Will be used as the source for EventPackets being
+    generate from its data.<br/>
+    <code>default is 1</code></li>
+<li><strong>bus_number_restrict</strong>: <code>int</code><br/>
+    restrict the search for viable devices to only this USB
+    bus number.<br/>
+    <code>default is 0</code></li>
+<li><strong>dev_address_restrict</strong>: <code>int</code><br/>
+    restrict the search for viable devices to only this USB
+    device address.<br/>
+    <code>default is 0</code></li>
+<li><strong>serial_number</strong>: <code>str</code><br/>
+    restrict the search for viable devices to only devices which do
+    possess the given Serial Number in their USB
+    SerialNumber descriptor.<br/>
+    <code>default is ""</code></li>
+</ul>
+<hr />
+<h3 id="set_bias_from_json">set_bias_from_json</h3>
+<div class="codehilite"><pre><span></span><span class="n">set_bias_from_json</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Set bias from loading JSON configuration file.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>file_path</strong>: <code>str</code><br/>
+    absolute path of the JSON bias file.</li>
+<li><strong>verbose</strong>: <code>bool</code><br/>
+    optional debugging message.</li>
+</ul>
+<hr />
+<h3 id="set_cf_bias">set_cf_bias</h3>
+<div class="codehilite"><pre><span></span><span class="n">set_cf_bias</span><span class="p">(</span><span class="n">param_addr</span><span class="p">,</span> <span class="n">param</span><span class="p">,</span> <span class="n">coarse</span><span class="p">,</span> <span class="n">fine</span><span class="p">,</span> <span class="n">mode</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Setting coarse fine bias.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>param_addr</strong>: <code>int</code><br/>
+    a parameter address, to select a specific parameter to update
+    from this particular configuration module. Only positive numbers
+    (including zero) are allowed.</li>
+<li><strong>param</strong>: <code>int</code> or <code>bool</code><br/>
+    a configuration parameter's new value.</li>
+<li><strong>coarse</strong>: <code>int</code><br/>
+    coarae value</li>
+<li><strong>fine</strong>: <code>int</code><br/>
+    fine value</li>
+<li><strong>mode</strong>: <code>setting mode</code><br/>
+    <code>n_type</code>, <code>p_type</code>, <code>n_cas_type</code>, <code>n_off_type</code>,
+    <code>p_off_type</code>, <code>vdac</code></li>
+</ul>
+<hr />
+<h3 id="set_bias">set_bias</h3>
+<div class="codehilite"><pre><span></span><span class="n">set_bias</span><span class="p">(</span><span class="n">bias_obj</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Set bias from bias dictionary.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>bias_obj</strong>: <code>dict</code><br/>
+    dictionary that contains DAVIS biases.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><strong>flag</strong>: <code>bool</code><br/>
+    True if set successful, False otherwise.</li>
+</ul>
+<hr />
+<h3 id="get_cf_bias">get_cf_bias</h3>
+<div class="codehilite"><pre><span></span><span class="n">get_cf_bias</span><span class="p">(</span><span class="n">param_addr</span><span class="p">,</span> <span class="n">param</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Get coarse-fine bias.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>param_addr</strong>: <code>int</code><br/>
+    a parameter address, to select a specific parameter to update
+    from this particular configuration module. Only positive numbers
+    (including zero) are allowed.</li>
+<li><strong>param</strong>: <code>int</code> or <code>bool</code><br/>
+    a configuration parameter's new value.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><strong>coarse_value</strong>: <code>uint</code><br/>
+    coarse value</li>
+<li><strong>fine_value</strong>: <code>uint</code><br/>
+    fine value</li>
+</ul>
+<hr />
+<h3 id="get_bias">get_bias</h3>
+<div class="codehilite"><pre><span></span><span class="n">get_bias</span><span class="p">()</span>
+</pre></div>
+
+
+<p>Get bias settings.</p>
+<p><strong>Returns</strong></p>
+<ul>
+<li><strong>bias_obj</strong>: <code>dict</code><br/>
+    dictionary that contains DAVIS current bias settings.</li>
+</ul>
+<hr />
+<h3 id="save_bias_to_json">save_bias_to_json</h3>
+<div class="codehilite"><pre><span></span><span class="n">save_bias_to_json</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Save bias to JSON.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>file_path</strong>: <code>str</code><br/>
+    the absolute path to the destiation.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><strong>flag</strong>: <code>bool</code><br/>
+    returns True if success in writing, False otherwise.</li>
+</ul>
+<hr />
+<h3 id="start_data_stream">start_data_stream</h3>
+<div class="codehilite"><pre><span></span><span class="n">start_data_stream</span><span class="p">(</span><span class="n">send_default_config</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Start streaming data.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>send_default_config</strong>: <code>bool</code><br/>
+    send default config to the device before starting
+    the data streaming.<br/>
+    <code>default is True</code></li>
+</ul>
+<hr />
+<h3 id="set_noise_filter">set_noise_filter</h3>
+<div class="codehilite"><pre><span></span><span class="n">set_noise_filter</span><span class="p">(</span><span class="n">noise_filter</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Set noise filter.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>noise_filter</strong>: <code>filters.DVSNoise</code><br/>
+    A valid <code>DVSNoise</code> object. This filter implements
+    software-level background activity filter.</li>
+</ul>
+<hr />
+<h3 id="enable_noise_filter">enable_noise_filter</h3>
+<div class="codehilite"><pre><span></span><span class="n">enable_noise_filter</span><span class="p">()</span>
+</pre></div>
+
+
+<p>Enalbe DVS noise filter.</p>
+<p>This function enables the DVS noise filter.
+Note that this function will initialize a <code>DVSNoise</code> filter
+if there is None.</p>
+<hr />
+<h3 id="disable_noise_filter">disable_noise_filter</h3>
+<div class="codehilite"><pre><span></span><span class="n">disable_noise_filter</span><span class="p">()</span>
+</pre></div>
+
+
+<p>Disable noise filter.</p>
+<p>This method disable the noise filter. Note that this function
+doesn't destroy the existed noise filter. It simply switches off
+the function.</p>
+<hr />
+<h3 id="get_polarity_event">get_polarity_event</h3>
+<div class="codehilite"><pre><span></span><span class="n">get_polarity_event</span><span class="p">(</span><span class="n">packet_header</span><span class="p">,</span> <span class="n">noise_filter</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Get a packet of polarity event.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>packet_header</strong>: <code>caerEventPacketHeader</code><br/>
+    the header that represents a event packet</li>
+<li><strong>noise_filter</strong>: <code>bool</code><br/>
+    the background activity filter is applied if True.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><strong>events</strong>: <code>numpy.ndarray</code><br/>
+    a 2-D array that has the shape of (N, 4) where N
+    is the number of events in the event packet.
+    Each row in the array represents a single polarity event.
+    The first number is the timestamp.
+    The second number is the X position of the event.
+    The third number is the Y position of the event.
+    The fourth number represents the polarity of the event
+    (positive or negative).<br/>
+    If the <code>noise_filter</code> option is set to <code>True</code>,
+    this array has an additional column at the end.
+    The last column represents the validity of the corresponding
+    event. Filtered events will be marked as 0.</li>
+<li><strong>num_events</strong>: <code>int</code><br/>
+    number of the polarity events available in the packet.</li>
+</ul>
+<hr />
+<h3 id="get_event">get_event</h3>
+<div class="codehilite"><pre><span></span><span class="n">get_event</span><span class="p">()</span>
+</pre></div>
+
+
+<p>Get Event.</p>
+<p><strong>Returns</strong></p>
+<ul>
+<li><strong>pol_events</strong>: <code>numpy.ndarray</code><br/>
+    a 2-D array that has the shape of (N, 4) where N
+    is the number of events in the event packet.
+    Each row in the array represents a single polarity event.
+    The first number is the timestamp.
+    The second number is the X position of the event.
+    The third number is the Y position of the event.
+    The fourth number represents the polarity of the event
+    (positive or negative).<br/>
+    If the <code>noise_filter</code> option is set to <code>True</code>,
+    this array has an additional column at the end.
+    The last column represents the validity of the corresponding
+    event. Filtered events will be marked as 0.</li>
+<li><strong>num_pol_events</strong>: <code>int</code><br/>
+    number of the polarity events available in the packet.</li>
+<li><strong>special_events</strong>: <code>numpy.ndarray</code><br/>
+    a 2-D array that has the shape of (N, 2) where N
+    is the number of events in the event packet.
+    Each row in the array represents a single special event.
+    The first value is the timestamp of the event.
+    The second value is the special event data.</li>
+<li><strong>num_special_events</strong>: <code>int</code><br/>
+    number of the special events in the packet.</li>
+<li><strong>frames_ts</strong>: <code>numpy.ndarray</code><br/>
+    the APS frame timestamps.</li>
+<li><strong>frames</strong>: <code>numpy.ndarray</code><br/>
+    a 3-D array that has the shape of (N, height, width).
+    The height and width of the APS frame is determined by
+    the specific DAVIS device (e.g., DAVIS240 will have
+    a 180x240 APS frame.</li>
+<li><strong>imu_events</strong>: <code>numpy.ndarray</code><br/>
+    a 2-D array that has the shape of (N, 8) where N
+    is the number of IMU6 events in the packet.
+    Each row of the array consists a single IMU6 event.
+    The first value is the timestamp of the event.
+    The next three values are accelerations on the X, Y, and Z
+    axes. The next three values are angular velocity 
+    on the X, Y and Z axes.
+    The last value is the temperature in Celsius scale.</li>
+<li><strong>num_imu_events</strong>: <code>int</code><br/>
+    number of the IMU6 events.</li>
+</ul>
+<hr />
+<h2 id="davis240c-bias-example">DAVIS240C Bias Example</h2>
+<div class="codehilite"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;DiffBn_coarse&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="nt">&quot;DiffBn_fine&quot;</span><span class="p">:</span> <span class="mi">39</span><span class="p">,</span>
+    <span class="nt">&quot;ONBn_coarse&quot;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
+    <span class="nt">&quot;ONBn_fine&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
+    <span class="nt">&quot;OFFBn_coarse&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="nt">&quot;OFFBn_fine&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="nt">&quot;APSCasEPC_coarse&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="nt">&quot;APSCasEPC_fine&quot;</span><span class="p">:</span> <span class="mi">185</span><span class="p">,</span>
+    <span class="nt">&quot;DiffCasBNC_coarse&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="nt">&quot;DiffCasBNC_fine&quot;</span><span class="p">:</span> <span class="mi">115</span><span class="p">,</span>
+    <span class="nt">&quot;APSROSFBn_coarse&quot;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
+    <span class="nt">&quot;APSROSFBn_fine&quot;</span><span class="p">:</span> <span class="mi">219</span><span class="p">,</span>
+    <span class="nt">&quot;LocalBufBn_coarse&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="nt">&quot;LocalBufBn_fine&quot;</span><span class="p">:</span> <span class="mi">164</span><span class="p">,</span>
+    <span class="nt">&quot;PixInvBn_coarse&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="nt">&quot;PixInvBn_fine&quot;</span><span class="p">:</span> <span class="mi">129</span><span class="p">,</span>
+    <span class="nt">&quot;PrBp_coarse&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="nt">&quot;PrBp_fine&quot;</span><span class="p">:</span> <span class="mi">58</span><span class="p">,</span>
+    <span class="nt">&quot;PrSFBp_coarse&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="nt">&quot;PrSFBp_fine&quot;</span><span class="p">:</span> <span class="mi">33</span><span class="p">,</span>
+    <span class="nt">&quot;RefrBp_coarse&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="nt">&quot;RefrBp_fine&quot;</span><span class="p">:</span> <span class="mi">25</span><span class="p">,</span>
+    <span class="nt">&quot;AEPdBn_coarse&quot;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
+    <span class="nt">&quot;AEPdBn_fine&quot;</span><span class="p">:</span> <span class="mi">91</span><span class="p">,</span>
+    <span class="nt">&quot;LcolTimeoutBn_coarse&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="nt">&quot;LcolTimeoutBn_fine&quot;</span><span class="p">:</span> <span class="mi">49</span><span class="p">,</span>
+    <span class="nt">&quot;AEPuXBp_coarse&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="nt">&quot;AEPuXBp_fine&quot;</span><span class="p">:</span> <span class="mi">80</span><span class="p">,</span>
+    <span class="nt">&quot;AEPuYBp_coarse&quot;</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span>
+    <span class="nt">&quot;AEPuYBp_fine&quot;</span><span class="p">:</span> <span class="mi">152</span><span class="p">,</span>
+    <span class="nt">&quot;IFThrBn_coarse&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="nt">&quot;IFThrBn_fine&quot;</span><span class="p">:</span> <span class="mi">255</span><span class="p">,</span>
+    <span class="nt">&quot;IFRefrBn_coarse&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="nt">&quot;IFRefrBn_fine&quot;</span><span class="p">:</span> <span class="mi">255</span><span class="p">,</span>
+    <span class="nt">&quot;PadFollBn_coarse&quot;</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span>
+    <span class="nt">&quot;PadFollBn_fine&quot;</span><span class="p">:</span> <span class="mi">215</span><span class="p">,</span>
+    <span class="nt">&quot;APSOverflowLevelBn_coarse&quot;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
+    <span class="nt">&quot;APSOverflowLevelBn_fine&quot;</span><span class="p">:</span> <span class="mi">253</span><span class="p">,</span>
+    <span class="nt">&quot;BiasBuffer_coarse&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="nt">&quot;BiasBuffer_fine&quot;</span><span class="p">:</span> <span class="mi">254</span><span class="p">,</span>
+    <span class="nt">&quot;aps_enabled&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nt">&quot;dvs_enabled&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nt">&quot;exposure&quot;</span><span class="p">:</span> <span class="mi">4000</span><span class="p">,</span>
+    <span class="nt">&quot;autoexposure&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span> 
+    <span class="nt">&quot;frame_delay&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="nt">&quot;imu_enabled&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nt">&quot;imu_acc_scale&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="nt">&quot;imu_gyro_scale&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="nt">&quot;imu_low_pass_filter&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="nt">&quot;noise_filter_configs&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;sw_background_activity_two_levels&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nt">&quot;sw_background_activity_check_polarity&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nt">&quot;sw_background_activity_support_min&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="nt">&quot;sw_background_activity_support_max&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+        <span class="nt">&quot;sw_background_activity_time&quot;</span><span class="p">:</span> <span class="mi">2000</span><span class="p">,</span>
+        <span class="nt">&quot;sw_background_activity_enable&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nt">&quot;sw_refractory_period_time&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
+        <span class="nt">&quot;sw_refractory_period_enable&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nt">&quot;sw_hotpixel_enable&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nt">&quot;sw_hotpixel_learn&quot;</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h2 id="davis346b-bias-example">DAVIS346B Bias Example</h2>
+<div class="codehilite"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;ADC_RefHigh_volt&quot;</span><span class="p">:</span> <span class="mi">24</span><span class="p">,</span>
+    <span class="nt">&quot;ADC_RefHigh_curr&quot;</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span>
+    <span class="nt">&quot;ADC_RefLow_volt&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="nt">&quot;ADC_RefLow_curr&quot;</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span>
+    <span class="nt">&quot;LocalBufBn_coarse&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="nt">&quot;LocalBufBn_fine&quot;</span><span class="p">:</span> <span class="mi">164</span><span class="p">,</span>
+    <span class="nt">&quot;PadFollBn_coarse&quot;</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span>
+    <span class="nt">&quot;PadFollBn_fine&quot;</span><span class="p">:</span> <span class="mi">215</span><span class="p">,</span>
+    <span class="nt">&quot;DiffBn_coarse&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="nt">&quot;DiffBn_fine&quot;</span><span class="p">:</span> <span class="mi">39</span><span class="p">,</span>
+    <span class="nt">&quot;ONBn_coarse&quot;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
+    <span class="nt">&quot;ONBn_fine&quot;</span><span class="p">:</span> <span class="mi">255</span><span class="p">,</span>
+    <span class="nt">&quot;OFFBn_coarse&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="nt">&quot;OFFBn_fine&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="nt">&quot;PixInvBn_coarse&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="nt">&quot;PixInvBn_fine&quot;</span><span class="p">:</span> <span class="mi">129</span><span class="p">,</span>
+    <span class="nt">&quot;PrBp_coarse&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="nt">&quot;PrBp_fine&quot;</span><span class="p">:</span> <span class="mi">255</span><span class="p">,</span>
+    <span class="nt">&quot;PrSFBp_coarse&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="nt">&quot;PrSFBp_fine&quot;</span><span class="p">:</span> <span class="mi">199</span><span class="p">,</span>
+    <span class="nt">&quot;RefrBp_coarse&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="nt">&quot;RefrBp_fine&quot;</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span>
+    <span class="nt">&quot;ReadoutBufBp_coarse&quot;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
+    <span class="nt">&quot;ReadoutBufBp_fine&quot;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+    <span class="nt">&quot;APSROSFBn_coarse&quot;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
+    <span class="nt">&quot;APSROSFBn_fine&quot;</span><span class="p">:</span> <span class="mi">219</span><span class="p">,</span>
+    <span class="nt">&quot;ADCCompBp_coarse&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="nt">&quot;ADCCompBp_fine&quot;</span><span class="p">:</span> <span class="mi">20</span><span class="p">,</span>
+    <span class="nt">&quot;COLSELLowBn_coarse&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="nt">&quot;COLSELLowBn_fine&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="nt">&quot;DACBufBp_coarse&quot;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
+    <span class="nt">&quot;DACBufBp_fine&quot;</span><span class="p">:</span> <span class="mi">60</span><span class="p">,</span>
+    <span class="nt">&quot;LcolTimeoutBn_coarse&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="nt">&quot;LcolTimeoutBn_fine&quot;</span><span class="p">:</span> <span class="mi">49</span><span class="p">,</span>
+    <span class="nt">&quot;AEPdBn_coarse&quot;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span>
+    <span class="nt">&quot;AEPdBn_fine&quot;</span><span class="p">:</span> <span class="mi">91</span><span class="p">,</span>
+    <span class="nt">&quot;AEPuXBp_coarse&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="nt">&quot;AEPuXBp_fine&quot;</span><span class="p">:</span> <span class="mi">80</span><span class="p">,</span>
+    <span class="nt">&quot;AEPuYBp_coarse&quot;</span><span class="p">:</span> <span class="mi">7</span><span class="p">,</span>
+    <span class="nt">&quot;AEPuYBp_fine&quot;</span><span class="p">:</span> <span class="mi">152</span><span class="p">,</span>
+    <span class="nt">&quot;IFRefrBn_coarse&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="nt">&quot;IFRefrBn_fine&quot;</span><span class="p">:</span> <span class="mi">255</span><span class="p">,</span>
+    <span class="nt">&quot;IFThrBn_coarse&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="nt">&quot;IFThrBn_fine&quot;</span><span class="p">:</span> <span class="mi">255</span><span class="p">,</span>
+    <span class="nt">&quot;BiasBuffer_coarse&quot;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="nt">&quot;BiasBuffer_fine&quot;</span><span class="p">:</span> <span class="mi">254</span><span class="p">,</span>
+    <span class="nt">&quot;aps_enabled&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nt">&quot;dvs_enabled&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nt">&quot;exposure&quot;</span><span class="p">:</span> <span class="mi">4000</span><span class="p">,</span>
+    <span class="nt">&quot;autoexposure&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nt">&quot;frame_delay&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="nt">&quot;imu_enabled&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nt">&quot;imu_acc_scale&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="nt">&quot;imu_gyro_scale&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="nt">&quot;imu_low_pass_filter&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="nt">&quot;background_activity_filter_enabled&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+    <span class="nt">&quot;background_activity_filter_time&quot;</span><span class="p">:</span> <span class="mi">80</span><span class="p">,</span>
+    <span class="nt">&quot;refractory_period_enabled&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="nt">&quot;refractory_period_time&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+    <span class="nt">&quot;noise_filter_configs&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;sw_background_activity_two_levels&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nt">&quot;sw_background_activity_check_polarity&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nt">&quot;sw_background_activity_support_min&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="nt">&quot;sw_background_activity_support_max&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+        <span class="nt">&quot;sw_background_activity_time&quot;</span><span class="p">:</span> <span class="mi">2000</span><span class="p">,</span>
+        <span class="nt">&quot;sw_background_activity_enable&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nt">&quot;sw_refractory_period_time&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span>
+        <span class="nt">&quot;sw_refractory_period_enable&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nt">&quot;sw_hotpixel_enable&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+        <span class="nt">&quot;sw_hotpixel_learn&quot;</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../edvs/" class="btn btn-neutral float-right" title="eDVS">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../dvs128/" class="btn btn-neutral" title="DVS128"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/duguyue100/pyaer/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../dvs128/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../edvs/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>
