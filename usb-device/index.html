@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>USB Device - PyAER Documentation</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  <link href="../css/highlight-fix.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "USB Device";
+    var mkdocs_page_input_path = "usb-device.md";
+    var mkdocs_page_url = "/pyaer-doc/usb-device/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> PyAER Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">USB Device</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#usbdevice">USBDevice</a></li>
+    
+
+    <li class="toctree-l2"><a href="#open">open</a></li>
+    
+
+    <li class="toctree-l2"><a href="#data_start">data_start</a></li>
+    
+
+    <li class="toctree-l2"><a href="#data_stop">data_stop</a></li>
+    
+
+    <li class="toctree-l2"><a href="#close">close</a></li>
+    
+
+    <li class="toctree-l2"><a href="#shutdown">shutdown</a></li>
+    
+
+    <li class="toctree-l2"><a href="#obtain_device_info">obtain_device_info</a></li>
+    
+
+    <li class="toctree-l2"><a href="#send_default_config">send_default_config</a></li>
+    
+
+    <li class="toctree-l2"><a href="#set_data_exchange_blocking">set_data_exchange_blocking</a></li>
+    
+
+    <li class="toctree-l2"><a href="#set_config">set_config</a></li>
+    
+
+    <li class="toctree-l2"><a href="#get_config">get_config</a></li>
+    
+
+    <li class="toctree-l2"><a href="#get_event">get_event</a></li>
+    
+
+    <li class="toctree-l2"><a href="#get_packet_container">get_packet_container</a></li>
+    
+
+    <li class="toctree-l2"><a href="#get_packet_header">get_packet_header</a></li>
+    
+
+    <li class="toctree-l2"><a href="#get_event_packet">get_event_packet</a></li>
+    
+
+    <li class="toctree-l2"><a href="#get_polarity_event">get_polarity_event</a></li>
+    
+
+    <li class="toctree-l2"><a href="#get_special_event">get_special_event</a></li>
+    
+
+    <li class="toctree-l2"><a href="#get_frame_event">get_frame_event</a></li>
+    
+
+    <li class="toctree-l2"><a href="#get_imu6_event">get_imu6_event</a></li>
+    
+
+    <li class="toctree-l2"><a href="#get_imu9_event">get_imu9_event</a></li>
+    
+
+    <li class="toctree-l2"><a href="#get_spike_event">get_spike_event</a></li>
+    
+
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../serial-device/">Serial Device</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../dvs128/">DVS128</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../davis/">DAVIS</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../edvs/">eDVS</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../dynapse/">DYNAPSE</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../filters/">Filters</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../utils/">Utils</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../log/">Logging</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">PyAER Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>USB Device</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/duguyue100/pyaer/edit/master/docs/usb-device.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <p><span style="float:right;"><a href="https://github.com/duguyue100/pyaer/blob/master/pyaer/device.py#L11">[source]</a></span></p>
+<h3 id="usbdevice">USBDevice</h3>
+<div class="codehilite"><pre><span></span><span class="n">pyaer</span><span class="o">.</span><span class="n">device</span><span class="o">.</span><span class="n">USBDevice</span><span class="p">()</span>
+</pre></div>
+
+
+<p>Base class for all USB devices.</p>
+<p>This class is the base of DVS128, DAVIS240, DAVIS346 and DYNAPSE.</p>
+<hr />
+<h3 id="open">open</h3>
+<div class="codehilite"><pre><span></span><span class="nb">open</span><span class="p">(</span><span class="n">device_type</span><span class="p">,</span> <span class="n">device_id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">bus_number_restrict</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">dev_address_restrict</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">serial_number</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Open USB deivce.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>device_type</strong>: <code>int</code><br/>
+    Device type:<br/>
+    <code>libcaer.CAER_DEVICE_DVS128</code>,
+    <code>libcaer.CAER_DEVICE_EDVS</code>,
+    <code>libcaer.CAER_DEVICE_DAVIS</code>,
+    <code>libcaer.CAER_DEVICE_DAVIS_FX2</code>,
+    <code>libcaer.CAER_DEVICE_DAVIS_FX3</code>,
+    <code>libcaer.CAER_DEVICE_DAVIS_RPI</code>,
+    <code>libcaer.CAER_DEVICE_DYNAPSE</code>.</li>
+<li><strong>device_id</strong>: <code>int</code><br/>
+    a unique ID to identify the device from others.
+    Will be used as the source for EventPackets being
+    generate from its data.<br/>
+    <code>default is 1</code>.</li>
+<li><strong>bus_number_restrict</strong>: <code>int</code><br/>
+    restrict the search for viable devices to only this USB
+    bus number.<br/>
+    <code>default is 0</code>.</li>
+<li><strong>dev_address_restrict</strong>: <code>int</code><br/>
+    restrict the search for viable devices to only this USB
+    device address.<br/>
+    <code>default is 0</code>.</li>
+<li><strong>serial_number</strong>: <code>str</code><br/>
+    restrict the search for viable devices to only devices which do
+    possess the given Serial Number in their USB
+    SerialNumber descriptor.<br/>
+    <code>default is ""</code></li>
+</ul>
+<hr />
+<h3 id="data_start">data_start</h3>
+<div class="codehilite"><pre><span></span><span class="n">data_start</span><span class="p">()</span>
+</pre></div>
+
+
+<p>Start data transmission.</p>
+<p><strong>Returns</strong></p>
+<ul>
+<li><strong>flag</strong>: <code>bool</code><br/>
+    Return <code>True</code> if the data transmission is
+    initialized successfully. Otherwise <code>False</code>.</li>
+</ul>
+<hr />
+<h3 id="data_stop">data_stop</h3>
+<div class="codehilite"><pre><span></span><span class="n">data_stop</span><span class="p">()</span>
+</pre></div>
+
+
+<p>Stop data transmission.</p>
+<p>This method stops the data transmission only.
+Note that this method does not destroy the respective
+device <code>handle</code>.</p>
+<hr />
+<h3 id="close">close</h3>
+<div class="codehilite"><pre><span></span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+
+
+<p>Close USB device.</p>
+<p>This method closes an opened USB device if the respective
+handle is not None.</p>
+<hr />
+<h3 id="shutdown">shutdown</h3>
+<div class="codehilite"><pre><span></span><span class="n">shutdown</span><span class="p">()</span>
+</pre></div>
+
+
+<p>Shutdown device.</p>
+<p>This method is a combination of <code>data_stop</code> and <code>close</code>.
+This is a preferred way of shutting down a device.</p>
+<hr />
+<h3 id="obtain_device_info">obtain_device_info</h3>
+<div class="codehilite"><pre><span></span><span class="n">obtain_device_info</span><span class="p">(</span><span class="n">handle</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Obtain device handle.</p>
+<p>This abstract method should be implemented in all derived classes.
+This method collects the general information about the USB device
+such as the width and height of the camera or the serial number
+of the device.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>handle</strong>: <code>caerDeviceHandle</code><br/>
+    a valid device handle that can be used with the other
+    <code>libcaer</code> functions, or <code>None</code> on error.</li>
+</ul>
+<hr />
+<h3 id="send_default_config">send_default_config</h3>
+<div class="codehilite"><pre><span></span><span class="n">send_default_config</span><span class="p">()</span>
+</pre></div>
+
+
+<p>Send default configuration.</p>
+<p>Each type of devices has a set of default configurations (e.g. bias)
+that are pre-defined in the <code>libcaer</code> library.
+Note that the default configuration might not be suitable for your
+needs.</p>
+<p><strong>Returns</strong></p>
+<ul>
+<li><strong>flag</strong>: <code>bool</code><br/>
+    return <code>True</code> if the default config is set successfully,
+    <code>False</code> otherwise.</li>
+</ul>
+<hr />
+<h3 id="set_data_exchange_blocking">set_data_exchange_blocking</h3>
+<div class="codehilite"><pre><span></span><span class="n">set_data_exchange_blocking</span><span class="p">(</span><span class="n">exchange_blocking</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Set data exchange blocking.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>exchange_blocking</strong>: <code>bool</code><br/>
+    whether to start all the data producer modules on the device
+    (DVS, APS, Mux, ...) automatically when starting the
+    data transfer thread with <code>caerDeviceDataStart()</code> or not.
+    If disabled, be aware you will have to start the right modules
+    manually, which can be useful if you need precise control
+    over which ones are running at any time.<br/>
+    The default is <code>True</code>.</li>
+</ul>
+<hr />
+<h3 id="set_config">set_config</h3>
+<div class="codehilite"><pre><span></span><span class="n">set_config</span><span class="p">(</span><span class="n">mod_addr</span><span class="p">,</span> <span class="n">param_addr</span><span class="p">,</span> <span class="n">param</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Set configuration.</p>
+<p>The main function of setting configurations (e.g., bias).</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>mod_addr</strong>: <code>int</code><br/>
+    a module address, used to specify which configuration module
+    one wants to update. Negative addresses are used for host-side
+    configuration, while positive addresses (including zero) are
+    used for device-side configuration.</li>
+<li><strong>param_addr</strong>: <code>int</code><br/>
+    a parameter address, to select a specific parameter to update
+    from this particular configuration module. Only positive numbers
+    (including zero) are allowed.</li>
+<li><strong>param</strong>: <code>int</code> or <code>bool</code><br/>
+    a configuration parameter's new value.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><strong>flag</strong>: <code>bool</code><br/>
+    returns <code>True</code> if the config is set successfully,
+    <code>False</code> otherwise.</li>
+</ul>
+<hr />
+<h3 id="get_config">get_config</h3>
+<div class="codehilite"><pre><span></span><span class="n">get_config</span><span class="p">(</span><span class="n">mod_addr</span><span class="p">,</span> <span class="n">param_addr</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Get Configuration.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>mod_addr</strong>: <code>int</code><br/>
+    a module address, used to specify which configuration module
+    one wants to update. Negative addresses are used for host-side
+    configuration, while positive addresses (including zero) are
+    used for device-side configuration.</li>
+<li><strong>param_addr</strong>: <code>int</code><br/>
+    a parameter address, to select a specific parameter to update
+    from this particular configuration module. Only positive numbers
+    (including zero) are allowed.</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><strong>param</strong>: <code>int</code> or <code>bool</code><br/>
+    a configuration parameter's new value. Returns None
+    if the handle is not valid.</li>
+</ul>
+<hr />
+<h3 id="get_event">get_event</h3>
+<div class="codehilite"><pre><span></span><span class="n">get_event</span><span class="p">()</span>
+</pre></div>
+
+
+<p>Get Event.</p>
+<p>This abstract method should be implemented in all derived classes.
+This method returns a packet of events according to the type of
+the sensor.</p>
+<hr />
+<h3 id="get_packet_container">get_packet_container</h3>
+<div class="codehilite"><pre><span></span><span class="n">get_packet_container</span><span class="p">()</span>
+</pre></div>
+
+
+<p>Get event packet container.</p>
+<p><strong>Returns</strong></p>
+<ul>
+<li><strong>packet_container</strong>: <code>caerEventPacketContainer</code><br/>
+    a container that consists of event packets.</li>
+<li><strong>packet_number</strong>: <code>int</code><br/>
+    number of event packet in the container.</li>
+</ul>
+<hr />
+<h3 id="get_packet_header">get_packet_header</h3>
+<div class="codehilite"><pre><span></span><span class="n">get_packet_header</span><span class="p">(</span><span class="n">packet_container</span><span class="p">,</span> <span class="n">idx</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Get a single packet header.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>packet_container</strong>: <code>caerEventPacketContainer</code><br/>
+    the event packet container</li>
+<li><strong>idx</strong>: <code>int</code><br/>
+    the index of the packet header</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><strong>packet_header</strong>: <code>caerEventPacketHeader</code><br/>
+    the header that represents a event packet</li>
+<li><strong>packet_type</strong>: <code>caerEventPacketType</code><br/>
+    the type of the event packet</li>
+</ul>
+<hr />
+<h3 id="get_event_packet">get_event_packet</h3>
+<div class="codehilite"><pre><span></span><span class="n">get_event_packet</span><span class="p">(</span><span class="n">packet_header</span><span class="p">,</span> <span class="n">packet_type</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Get event packet from packet header.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>packet_header</strong>: <code>caerEventPacketHeader</code><br/>
+    the header that represents a event packet.</li>
+<li><strong>packet_type</strong>: <code>caerEventPacketType</code><br/>
+    the type of the event packet, can be one of the following:
+    <code>libcaer.POLARITY_EVENT</code>,
+    <code>libcaer.SPECIAL_EVENT</code>,
+    <code>libcaer.FRAME_EVENT</code>,
+    <code>libcaer.IMU6_EVENT</code>,
+    <code>libcaer.SPIKE_EVENT</code></li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><strong>num_events</strong>: <code>int</code><br/>
+    number of events, return None if there is no events.</li>
+<li><strong>event_packet</strong>: <code>caerEventPacket</code><br/>
+    a packet of events that are ready to be read.</li>
+</ul>
+<hr />
+<h3 id="get_polarity_event">get_polarity_event</h3>
+<div class="codehilite"><pre><span></span><span class="n">get_polarity_event</span><span class="p">(</span><span class="n">packet_header</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Get a packet of polarity event.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>packet_header</strong>: <code>caerEventPacketHeader</code><br/>
+    the header that represents a event packet</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><strong>events</strong>: <code>numpy.ndarray</code><br/>
+    a 2-D array that has the shape of (N, 4) where N
+    is the number of events in the event packet.
+    Each row in the array represents a single polarity event.
+    The first number is the timestamp.
+    The second number is the X position of the event.
+    The third number is the Y position of the event.
+    The fourth number represents the polarity of the event
+    (positive or negative).</li>
+<li><strong>num_events</strong>: <code>int</code><br/>
+    number of the polarity events available in the packet.</li>
+</ul>
+<hr />
+<h3 id="get_special_event">get_special_event</h3>
+<div class="codehilite"><pre><span></span><span class="n">get_special_event</span><span class="p">(</span><span class="n">packet_header</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Get a packet of special event.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>packet_header</strong>: <code>caerEventPacketHeader</code><br/>
+    the header that represents a event packet</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><strong>events</strong>: <code>numpy.ndarray</code><br/>
+    a 2-D array that has the shape of (N, 2) where N
+    is the number of events in the event packet.
+    Each row in the array represents a single special event.
+    The first value is the timestamp of the event.
+    The second value is the special event data.</li>
+<li><strong>num_events</strong>: <code>int</code><br/>
+    number of the special events in the packet.</li>
+</ul>
+<hr />
+<h3 id="get_frame_event">get_frame_event</h3>
+<div class="codehilite"><pre><span></span><span class="n">get_frame_event</span><span class="p">(</span><span class="n">packet_header</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Get a packet of frame event.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>packet_header</strong>: <code>caerEventPacketHeader</code><br/>
+    the header that represents a event packet</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><strong>frame_mat</strong>: <code>numpy.ndarray</code><br/>
+    a 2-D array that has the shape of (height, width).
+    The height and width of the APS frame is determined by
+    the specific DAVIS device (e.g., DAVIS240 will have
+    a 180x240 APS frame.</li>
+<li><strong>frame_ts</strong>: <code>int</code><br/>
+    the APS frame timestamp.</li>
+</ul>
+<hr />
+<h3 id="get_imu6_event">get_imu6_event</h3>
+<div class="codehilite"><pre><span></span><span class="n">get_imu6_event</span><span class="p">(</span><span class="n">packet_header</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Get IMU6 event.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>packet_header</strong>: <code>caerEventPacketHeader</code>
+    the header that represents a event packet</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><strong>events</strong>: <code>numpy.ndarray</code><br/>
+    a 2-D array that has the shape of (N, 8) where N
+    is the number of IMU6 events in the packet.
+    Each row of the array consists a single IMU6 event.
+    The first value is the timestamp of the event.
+    The next three values are accelerations on the X, Y, and Z
+    axes. The next three values are angular velocity 
+    on the X, Y and Z axes.
+    The last value is the temperature in Celsius scale.</li>
+<li><strong>num_events</strong>: <code>int</code><br/>
+    number of the IMU6 events.</li>
+</ul>
+<hr />
+<h3 id="get_imu9_event">get_imu9_event</h3>
+<div class="codehilite"><pre><span></span><span class="n">get_imu9_event</span><span class="p">(</span><span class="n">packet_header</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Get IMU9 event.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>packet_header</strong>: <code>caerEventPacketHeader</code>
+    the header that represents a event packet</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><strong>events</strong>: <code>numpy.ndarray</code><br/>
+    a 2-D array that has the shape of (N, 11) where N
+    is the number of IMU9 events in the packet.
+    Each row of the array consists a single IMU9 event.
+    The first value is the timestamp of the event.
+    The next three values are accelerations on the X, Y, and Z
+    axes. The next three values are angular velocity 
+    on the X, Y and Z axes. The next three values are
+    X, Y, Z axis compass heading.
+    The last value is the temperature in Celsius scale.</li>
+<li><strong>num_events</strong>: <code>int</code><br/>
+    number of the IMU9 events.</li>
+</ul>
+<hr />
+<h3 id="get_spike_event">get_spike_event</h3>
+<div class="codehilite"><pre><span></span><span class="n">get_spike_event</span><span class="p">(</span><span class="n">packet_header</span><span class="p">)</span>
+</pre></div>
+
+
+<p>Get Spike Event.</p>
+<p><strong>Arguments</strong></p>
+<ul>
+<li><strong>packet_header</strong>: <code>caerEventPacketHeader</code>
+    the header that represents a event packet</li>
+</ul>
+<p><strong>Returns</strong></p>
+<ul>
+<li><strong>events</strong>: <code>numpy.ndarray</code><br/>
+    a 2-D array that has the shape of (N, 4) where N
+    is the number of spike events in the packet.
+    Each row of the array has a single spike event.
+    The first value is the timestamp of the event.
+    The second value is the neuron ID.
+    The third value is the chip ID.
+    The last value is the source core ID.</li>
+<li><strong>num_events</strong>: <code>int</code><br/>
+    the number of the spike events.</li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../serial-device/" class="btn btn-neutral float-right" title="Serial Device">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href=".." class="btn btn-neutral" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/duguyue100/pyaer/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href=".." style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../serial-device/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>
